@@ -1,3 +1,4 @@
+// Default Users
 let users = [
     {
         id:1, name:"john", age:"18", profession:"developer"
@@ -11,6 +12,7 @@ let users = [
 ];
 
 /////        Filter     //////
+const container = document.getElementById("filterContent");
 
 function filter() {
     console.log(users);
@@ -21,79 +23,63 @@ function filter() {
         return;
     }
     
-    const container = document.getElementById("filterContent");
     // Resetting the container
     container.innerHTML = '';
 
     for(let i=0; i<users.length; i++) {
-        if(users[i].profession.toLowerCase() == filterValue) {
-            const userContainer = document.createElement("div");
-            userContainer.className = "user";
-
-            const idSpan = document.createElement("span");
-            idSpan.innerText = users[i].id.toString() + ".";
-
-            const nameSpan = document.createElement("span");
-            nameSpan.innerText = "Name: " + users[i].name[0].toUpperCase() + users[i].name.substring(1);
-
-            const professionSpan = document.createElement("span");
-            professionSpan.innerText = "Profession: " + users[i].profession[0].toUpperCase() + users[i].profession.substring(1);
-
-            const ageSpan = document.createElement("span");
-            ageSpan.innerText = "Age: " + users[i].age;
-
-            userContainer.append(idSpan);
-            userContainer.append(nameSpan);
-            userContainer.append(professionSpan);
-            userContainer.append(ageSpan);
-
-            container.append(userContainer);
-        }
+        if(users[i].profession.toLowerCase() == filterValue)
+            showUser(i);
     }
-
 }
 
     ////     Add new user   /////
 function addUser() {
-    let userObj = {};
-    userObj.id = users.length+1;
-    userObj.name = document.getElementById("name").value;
-    userObj.profession = document.getElementById("profession").value;
-    userObj.age = document.getElementById("age").value;
-    
-    users.push(userObj);
+    // check
+    if(document.getElementById("name").value == "" || document.getElementById("profession").value == "" || document.getElementById("age").value == "")
+        return;
 
-    // Show all users
-    showAllUsers();
+    // Clearing the container
+    container.innerHTML = '';
+
+    let newUser = {};
+    newUser.id = users.length+1;
+    newUser.name = document.getElementById("name").value;
+    newUser.profession = document.getElementById("profession").value;
+    newUser.age = document.getElementById("age").value;
+    
+    users.push(newUser);
+
+    for(let i=0; i<users.length; i++)
+        showUser(i);
+
+    // Clear the input text box
+    document.getElementById("name").value = "";
+    document.getElementById("profession").value = "";
+    document.getElementById("age").value = "";
 }
 
-    ////    Show all user   /////
-function showAllUsers() {
-    const container1 = document.getElementById("filterContent");
-    // Resetting the container
-    container1.innerHTML = '';
+    ////    Showing user UI card in fliter section   /////
+function showUser(i) {
+    
+    const userContainer1 = document.createElement("div");//Creating the Ui card container
+    userContainer1.className = "user";
 
-    for(let i=0; i<users.length; i++) {
-        const userContainer1 = document.createElement("div");
-        userContainer1.className = "user";
+    const idSpan1 = document.createElement("span");
+    idSpan1.innerText = users[i].id.toString() + ".";
 
-        const idSpan1 = document.createElement("span");
-        idSpan1.innerText = users[i].id.toString() + ".";
+    const nameSpan1 = document.createElement("span");
+    nameSpan1.innerText = "Name: " + users[i].name[0].toUpperCase() + users[i].name.substring(1);
 
-        const nameSpan1 = document.createElement("span");
-        nameSpan1.innerText = "Name: " + users[i].name[0].toUpperCase() + users[i].name.substring(1);
+    const professionSpan1 = document.createElement("span");
+    professionSpan1.innerText = "Profession: " + users[i].profession[0].toUpperCase() + users[i].profession.substring(1);
 
-        const professionSpan1 = document.createElement("span");
-        professionSpan1.innerText = "Profession: " + users[i].profession[0].toUpperCase() + users[i].profession.substring(1);
+    const ageSpan1 = document.createElement("span");
+    ageSpan1.innerText = "Age: " + users[i].age;
 
-        const ageSpan1 = document.createElement("span");
-        ageSpan1.innerText = "Age: " + users[i].age;
+    userContainer1.append(idSpan1);
+    userContainer1.append(nameSpan1);
+    userContainer1.append(professionSpan1);
+    userContainer1.append(ageSpan1);
 
-        userContainer1.append(idSpan1);
-        userContainer1.append(nameSpan1);
-        userContainer1.append(professionSpan1);
-        userContainer1.append(ageSpan1);
-
-        container1.append(userContainer1);
-    }
+    container.append(userContainer1);
 }
