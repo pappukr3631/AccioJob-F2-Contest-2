@@ -15,7 +15,6 @@ let users = [
 const container = document.getElementById("filterContent");
 
 function filter() {
-    console.log(users);
     let filterValue = document.getElementById("filter-option").value;
 
     if(filterValue == "") {
