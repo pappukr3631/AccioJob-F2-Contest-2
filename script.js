@@ -34,13 +34,13 @@ function filter() {
             idSpan.innerText = users[i].id.toString() + ".";
 
             const nameSpan = document.createElement("span");
-            nameSpan.innerText = "Name : " + users[i].name[0].toUpperCase() + users[i].name.substring(1);
+            nameSpan.innerText = "Name: " + users[i].name[0].toUpperCase() + users[i].name.substring(1);
 
             const professionSpan = document.createElement("span");
-            professionSpan.innerText = "Profession : " + users[i].profession[0].toUpperCase() + users[i].profession.substring(1);
+            professionSpan.innerText = "Profession: " + users[i].profession[0].toUpperCase() + users[i].profession.substring(1);
 
             const ageSpan = document.createElement("span");
-            ageSpan.innerText = "Age : " + users[i].age;
+            ageSpan.innerText = "Age: " + users[i].age;
 
             userContainer.append(idSpan);
             userContainer.append(nameSpan);
@@ -81,13 +81,13 @@ function showAllUsers() {
         idSpan1.innerText = users[i].id.toString() + ".";
 
         const nameSpan1 = document.createElement("span");
-        nameSpan1.innerText = "Name : " + users[i].name[0].toUpperCase() + users[i].name.substring(1);
+        nameSpan1.innerText = "Name: " + users[i].name[0].toUpperCase() + users[i].name.substring(1);
 
         const professionSpan1 = document.createElement("span");
-        professionSpan1.innerText = "Profession : " + users[i].profession[0].toUpperCase() + users[i].profession.substring(1);
+        professionSpan1.innerText = "Profession: " + users[i].profession[0].toUpperCase() + users[i].profession.substring(1);
 
         const ageSpan1 = document.createElement("span");
-        ageSpan1.innerText = "Age : " + users[i].age;
+        ageSpan1.innerText = "Age: " + users[i].age;
 
         userContainer1.append(idSpan1);
         userContainer1.append(nameSpan1);
